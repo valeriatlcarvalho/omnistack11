@@ -8,6 +8,7 @@ const SessionController = require("./controllers/SessionController");
 
 const routes = express.Router();
 
+/* Sessions */
 routes.post(
   "/sessions",
   celebrate({
@@ -18,6 +19,7 @@ routes.post(
   SessionController.create
 );
 
+/* Ongs */
 routes.get("/ongs", OngController.index);
 
 routes.post(
@@ -28,7 +30,7 @@ routes.post(
       email: Joi.string()
         .required()
         .email(),
-      whatsapp: Joi.number()
+      whatsapp: Joi.string()
         .required()
         .min(10)
         .max(11),
@@ -41,6 +43,7 @@ routes.post(
   OngController.create
 );
 
+/* Profile */
 routes.get(
   "/profile",
   celebrate({
@@ -51,6 +54,7 @@ routes.get(
   ProfileController.index
 );
 
+/* Incidents */
 routes.get(
   "/incidents",
   celebrate({
